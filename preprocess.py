@@ -49,7 +49,7 @@ def write_processed(exchange, symbol, data, loc=None):
     data.to_parquet(filepath)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     exchange, symbol, data = read_trade_data('Bitfinex_BTCEUR_trades_'
                                              '2018_02_02.csv')
     write_processed(exchange, symbol, data)
