@@ -21,7 +21,7 @@ def read_trade_data(filepath):
     trades = pd.read_csv(filepath)
     # convert dates from unix timestamps
     trades['date'] = trades['date'].apply(convert_dates)
-    trades.drop_duplicates(subset='date', keep='first', inplace=True)
+    # trades.drop_duplicates(subset='date', keep='first', inplace=True)
     trades.set_index('date', inplace=True)
     trades.sort_index(ascending=True, inplace=True)
     # check data relates to a single exchange and coin pair

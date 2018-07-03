@@ -11,6 +11,7 @@ def calcSMA(df, prices, nos):
     * prices: price column from df
     * nos: number of steps
     """
-    df['SMA'] = float('NaN')
-    df['SMA'].iloc[nos:] = [np.mean(prices.iloc[i-nos:i]) \
-                            for i in range(nos,len(prices))]
+    colName = 'SMA-%s' % nos
+    df[colName] = float('NaN')
+    df[colName].iloc[nos:] = [np.mean(prices.iloc[i-nos:i]) \
+                              for i in range(nos,len(prices))]
