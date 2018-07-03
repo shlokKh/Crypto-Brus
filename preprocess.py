@@ -21,6 +21,7 @@ def read_trade_data(filepath):
     trades = pd.read_csv(filepath)
     # convert dates from unix timestamps
     trades['date'] = trades['date'].apply(convert_dates)
+    # trades.drop_duplicates(subset='date', keep='first', inplace=True)
     trades.set_index('date', inplace=True)
     trades.sort_index(ascending=True, inplace=True)
     # check data relates to a single exchange and coin pair
@@ -49,7 +50,7 @@ def write_processed(exchange, symbol, data, loc=None):
     data.to_parquet(filepath)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     exchange, symbol, data = read_trade_data('Bitfinex_BTCEUR_trades_'
                                              '2018_02_02.csv')
     write_processed(exchange, symbol, data)
